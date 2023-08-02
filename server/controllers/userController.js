@@ -44,7 +44,9 @@ class UserController {
         return res.json({token})
     }
     async check(req, res, next) {
-        res.json({message: 'Все работает'})
+        const token = generateJWT(req.user.id, req.user.email, req.user.role)
+        return res.json({token})
+        
     }
 }
 
