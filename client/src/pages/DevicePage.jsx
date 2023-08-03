@@ -1,22 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Col, Image, Row, Card, Button } from 'react-bootstrap'
 import star from '../assets/star.png'
+import { getOneDevice } from '../http/deviceApi'
+import { useParams } from 'react-router-dom'
 
 const DevicePage = () => {
-    const device = {id:1, name:'Iphone 12', price:100200, rating: 5, img: 'https://images.unsplash.com/photo-1640936343842-268f9d87e764?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=547&q=80'}
+    const [device, setDevice] = useState({info:[]})
+    const {id} = useParams()
 
-    const description = [
-        {id:1, title: 'Оперативная память', description: '5Гб'},
-        {id:1, title: 'Камера', description: '12Мп'},
-        {id:1, title: 'Процессор', description: 'icore i8'},
-        {id:1, title: 'Кол-во ядер', description: '12'},
-        {id:1, title: 'Аккумулятор', description: '20000'},
-    ]
+    useEffect(() => {
+        getOneDevice(id).then(data => setDevice(data))
+    }, [])
     return (    
        <Container className='mt-3'>
         <Row>
             <Col md={4}>
-                <Image width={300} height={300} src={device.img}/>
+                <Image width={300} height={300} src={process.env.REACT_APP_API_URL + device.img}/>
             </Col>
             <Col md={4}>
                 <Row className='d-flex flex-column align-items-center'>
@@ -44,8 +43,8 @@ const DevicePage = () => {
             </Row>
             <Row className='d-flex flex-column m-3'>
             <h1>Характеристики</h1>
-                {description.map((info,index) =>
-                    <Row key={info.id} style={{background: index % 2 ===0? 'lightgray': 'transparent', padding: 10}}>
+                {device.info.map((info,index) =>
+                    <Row key={id} style={{background: index % 2 ===0? 'lightgray': 'transparent', padding: 10}}>
                         {info.title}: {info.description}
                     </Row>
                     )}
