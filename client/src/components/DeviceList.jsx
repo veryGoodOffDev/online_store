@@ -6,10 +6,11 @@ import DeviceItem from "./DeviceItem";
 
 const DeviceList = observer(() => {
   const { device } = useContext(Context);
+  device.brands.map(b => console.log(b.name))
   return (
     <Row className="d-flex mt-2">
-        {device.devices.map(device => 
-            <DeviceItem key={device.id} item={device}/>
+        {device.devices.map(dev => 
+            <DeviceItem key={dev.id} dev={dev} brandId={dev.brandId}/>
             )}
     </Row>
   );

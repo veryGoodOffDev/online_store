@@ -4,7 +4,6 @@ import Shop from "../pages/Shop";
 import AdminPage from "../pages/AdminPage";
 import Bascet from "../pages/Bascet";
 import Auth from "../pages/Auth";
-import { publicRoutes } from "../routes";
 import {
   ADMIN_ROUTE,
   BASCET_ROUTE,
@@ -15,8 +14,9 @@ import {
 } from "../utils/consts";
 import DevicePage from "../pages/DevicePage";
 import { Context } from "..";
+import { observer } from "mobx-react-lite";
 
-const AppRouter = () => {
+const AppRouter = observer(() => {
   const {user} = useContext(Context)
   return (
     <>
@@ -41,6 +41,6 @@ const AppRouter = () => {
       )}
     </>
   );
-};
+});
 
 export default AppRouter;
