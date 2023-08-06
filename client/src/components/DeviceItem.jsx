@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, Card, Col, Image} from "react-bootstrap";
 import star from '../assets/star.png';
 import { useNavigate } from "react-router-dom";
@@ -11,18 +11,23 @@ const DeviceItem = ({dev, brandId}) => {
     const navigate = useNavigate()
     const {device} = useContext(Context)
     const {user} = useContext(Context)
-    const getNameBrand = () => {
-        return  device.brands.find(b => b.id === brandId)
-    }
+    const [brandName, setBrandName] = useState('')
+   useEffect(() => {
 
+    const brandName = device.brands.find(b => b.id === brandId)
+    setBrandName(brandName)
+
+   }, [device.brands])
     
+       
+
 
   return (
     <Col md={3}>
         <Card style={{width:150, cursor: 'pointer'}} border = 'light' className="mt-2" onClick={() => navigate(DEVICE_ROUTE + '/' + dev.id)}>
             <Image style={{objectFit:'cover'}} width={150} height={150} src={process.env.REACT_APP_API_URL + dev.img}/>
             <div className="d-flex justify-content-between align-items-center mt-1 text-black-50">
-                <div>{getNameBrand().name}</div>
+                <div>{brandName.name}</div>
             <div className="d-flex align-items-center">
                 <div className="m-2">{dev.rating}</div>
                 <Image src={star} width={15}/>

@@ -10,12 +10,6 @@ const Pages = observer(() => {
   for(let i = 0; i<pageCount; i++) {
     pages.push(i + 1)
   }
-  console.log(pages.length, 'pages')
-  console.log(pageCount, 'pageCount')
-  console.log(device.limit, 'limit')
-  console.log(device.totalCount, 'device.totalCount')
-
-
    return (
     
     <Pagination className="mt-5">

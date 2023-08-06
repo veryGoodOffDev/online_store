@@ -7,26 +7,37 @@ import { check } from "./http/userApi";
 import { BrowserRouter } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 
-const  App = observer(() => {
-  const {user} = useContext(Context)
-  const [isLoading, setIsLoasding] = useState(true)
+const App = observer(() => {
+  const { user } = useContext(Context);
+  const [isLoading, setIsLoasding] = useState(true);
 
   useEffect(() => {
-      check().then(data => {
-        user.setUser(true)
-        user.setIsAuth(true)
-      }).finally(() => setIsLoasding(false))
-  },[])
+    try {
+      check()
+        .then((data) => {
+          if(!data) {
+            console.log('пользователь не авторизован')
+          } else {
+            console.log(data, "data");
+            user.setUser(true);
+            user.setIsAuth(true);
+          }         
+        })
+        .finally(() => setIsLoasding(false));
+    } catch (e) {
+      console.log(e, 'Ошибка данных')
+    }
+  }, []);
 
-  if(isLoading) {
-    return <Spinner animation="grow"/>
+  if (isLoading) {
+    return <Spinner animation="grow" />;
   }
   return (
     <BrowserRouter>
-      <NavBar/>
-      <AppRouter/>
+      <NavBar />
+      <AppRouter />
     </BrowserRouter>
   );
-}) 
+});
 
 export default App;

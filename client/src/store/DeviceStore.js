@@ -10,10 +10,15 @@ export default class DeviceStore {
         this._page = 1
         this._totalCount = 0
         this._limit = 5
+        this._findBrand = []
         makeAutoObservable(this)
     }
     setTypes (types) {
         this._types = types
+    }
+
+    setFindBrand(id) {
+       this._findBrand.push(this._brands.find(brand => brand.id === id))
     }
 
     setBrands(brands) {
@@ -48,6 +53,10 @@ export default class DeviceStore {
 
     get brands() {
         return this._brands
+    }
+
+    get findBrand() {
+        return this._findBrand
     }
     get devices() {
         return this._devices
