@@ -1,6 +1,7 @@
 import {makeAutoObservable} from 'mobx'
 export default class DeviceStore {
     constructor() {
+        this._isLoading = false
         this._types = []
         this._brands = []
         this._devices = []
@@ -16,6 +17,9 @@ export default class DeviceStore {
     }
     setTypes (types) {
         this._types = types
+    }
+    setIsLoading(isLoading) {
+        this._isLoading = isLoading
     }
     setNamesBrands(namesBrands) {
         this._namesBrands = namesBrands
@@ -52,6 +56,10 @@ export default class DeviceStore {
 
     get types() {
         return this._types
+    }
+
+    get isLoading() {
+        return this._isLoading
     }
 
     get brands() {

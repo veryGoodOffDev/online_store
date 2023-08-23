@@ -11,36 +11,34 @@ import '../pages/Shop.css'
 
 const Shop = observer(() => {
   const { device } = useContext(Context);
-  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     getTypes().then((data) => device.setTypes(data));
     getBrands().then((data) => {
-      console.log(data);
       device.setBrands(data);
     });
-    getDevices(null, null, 1, 10).then((data) => {
+    getDevices(null, null, 1, 8).then((data) => {
       device.setDevices(data.rows);
       device.setTotalCount(data.count);
     });
   }, []);
 
   useEffect(() => {
+    device.setIsLoading(true)
     getDevices(
       device.selectedType.id,
       device.selectedBrand.id,
       device.page,
-      10
+      8
     ).then((data) => {
       device.setDevices(data.rows);
       device.setTotalCount(data.count);
-      console.log(data.rows);
-      setIsLoading(false)
+      device.setIsLoading(false)
     });
   }, [device.page, device.selectedBrand, device.selectedType]);
   return (
     <>
-      {isLoading ? (
+      {device.isLoading ? (
         <div className="spinner__container">
         <Spinner animation="border" variant="secondary" />
         </div>
