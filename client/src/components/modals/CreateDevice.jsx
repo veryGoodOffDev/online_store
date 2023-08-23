@@ -42,6 +42,9 @@ const CreateDevice = observer(({show, onHide}) => {
         formData.append('typeId', device.selectedType.id)
         formData.append('info', JSON.stringify(info))
         createDevice(formData).then(data => onHide())
+        console.log(formData, 'formdata')
+        device.setSelectedType({})
+        device.setSelectedBrand({})
     }
 
   return (

@@ -18,16 +18,16 @@ const App = observer(() => {
           if(!data) {
             console.log('пользователь не авторизован')
           } else {
-            console.log(data, "data");
             user.setUser(true);
             user.setIsAuth(true);
+            user.setRole(data.role)
           }         
         })
         .finally(() => setIsLoasding(false));
     } catch (e) {
       console.log(e, 'Ошибка данных')
     }
-  }, []);
+  }, [user]);
 
   if (isLoading) {
     return <Spinner animation="grow" />;

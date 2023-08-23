@@ -1,11 +1,23 @@
 import React from "react";
-import { Row} from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
 
+const BrandItem = ({ brand }) => {
+  const removeBrand = (id) => {
+    console.log(id, 'id brand')
+  }
 
-const BrandItem = ({brand}) => {
+  const editBrand = (id) => {
+    console.log(id, 'id brand')
+  }
   return (
-    <Row>
-        {brand.name}
+    <Row className="d-flex">
+      <Col md={1} className="d-flex mt-2">
+      {brand.name}
+      </Col>
+      <Col md={4}>
+      <Button onClick={() => removeBrand(brand.id)} variant='warning' className="m-1">Изменить</Button>
+      <Button onClick={() => editBrand(brand.id)} variant="danger" className="m-1">Удалить</Button>
+      </Col>
     </Row>
   );
 };

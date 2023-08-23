@@ -3,7 +3,11 @@ export default class UserStore {
     constructor() {
         this._isAuth = false
         this._user = {}
+        this._role = ''
         makeAutoObservable(this)
+    }
+    setRole(role) {
+        this._role = role
     }
     setIsAuth (bool) {
         this._isAuth = bool
@@ -11,6 +15,10 @@ export default class UserStore {
 
     setUser(bool) {
         this._isAuth = bool
+    }
+
+    get role() {
+        return this._role
     }
 
     get isAuth() {

@@ -4,21 +4,25 @@ export default class DeviceStore {
         this._types = []
         this._brands = []
         this._devices = []
+        this._namesBrands = []
 
         this._selectedType = {}
         this._selectedBrand = {}
         this._page = 1
         this._totalCount = 0
-        this._limit = 5
-        this._findBrand = []
+        this._limit = 10
+        this._findBrandById = null
         makeAutoObservable(this)
     }
     setTypes (types) {
         this._types = types
     }
+    setNamesBrands(namesBrands) {
+        this._namesBrands = namesBrands
+    }
 
     setFindBrand(id) {
-       this._findBrand.push(this._brands.find(brand => brand.id === id))
+       this._findBrandById = this._brands?.find(b => b.id === id)
     }
 
     setBrands(brands) {
@@ -28,7 +32,6 @@ export default class DeviceStore {
         this._devices = devices
     }
     setSelectedType(selectedType) {
-        console.log(selectedType, 'selectedType')
         this.setPage(1)
         this._selectedType = selectedType
     }
@@ -55,8 +58,8 @@ export default class DeviceStore {
         return this._brands
     }
 
-    get findBrand() {
-        return this._findBrand
+    get findBrandById() {
+        return this._findBrandById
     }
     get devices() {
         return this._devices
@@ -76,5 +79,9 @@ export default class DeviceStore {
     }
     get limit() {
         return this._limit
+    }
+
+    get namesBrands() {
+        return this._namesBrands
     }
 }

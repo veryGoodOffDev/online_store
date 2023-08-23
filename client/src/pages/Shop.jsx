@@ -10,20 +10,26 @@ import Pages from "../components/Pages";
 
 const Shop = observer(() => {
     const {device} = useContext(Context) 
-
+   
     useEffect(() => {
         getTypes().then(data => device.setTypes(data))
-        getBrands().then(data => device.setBrands(data))
-        getDevices(null, null, 1, 2).then(data => {
+        getBrands().then((data) => {
+            console.log(data)
+            device.setBrands(data)
+        })
+        getDevices(null, null, 1, 8).then(data => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
+
+            
         })
     }, [])
 
     useEffect(() => {
-        getDevices(device.selectedType.id, device.selectedBrand.id, device.page, 9).then(data => {
+        getDevices(device.selectedType.id, device.selectedBrand.id, device.page, 8).then(data => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
+            console.log(data.rows)
         })
     }, [device.page, device.selectedBrand, device.selectedType])
     return (
