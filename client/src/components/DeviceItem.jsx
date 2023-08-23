@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Button, Card, Col, Image, Footer } from "react-bootstrap";
+import React, { useContext} from "react";
+import { Button, Card, Col, Image } from "react-bootstrap";
 import star from "../assets/star.png";
 import { useNavigate } from "react-router-dom";
 import { DEVICE_ROUTE } from "../utils/consts";
@@ -8,23 +8,8 @@ import { deleteDevice } from "../http/deviceApi";
 
 const DeviceItem = ({ dev, brandId, brandName }) => {
   const navigate = useNavigate();
-  const { device } = useContext(Context);
   const { user } = useContext(Context);
-  const [brand, setBrand] = useState(null);
 
-  useEffect(() => {
-    // Получение имени бренда из хранилища по его id
-    const fetchBrand = async () => {
-      try {
-        await device.setFindBrand(brandId);
-        // s(device.findBrandById.name); // Установка имени бренда в состояние
-      } catch (error) {
-        console.error('Ошибка при получении информации о бренде', error);
-      }
-    };
-
-    fetchBrand(); // Вызов функции получения информации о бренде
-  }, [device.brands, device.findBrandById]);
   const removeItem = (id) => {   
        deleteDevice(id).then(data => console.log(data)) 
         console.log(id, 'id устройства, удаление')
@@ -49,7 +34,7 @@ const DeviceItem = ({ dev, brandId, brandName }) => {
           src={process.env.REACT_APP_API_URL + dev.img}
         />
         <div className="d-flex justify-content-between align-items-center mt-1 text-black-50">
-          <div>{brandName.name}</div>
+          <div>{brandName?.name}</div>
           <div className="d-flex align-items-center">
             <div className="m-2">{dev.rating}</div>
             <Image src={star} width={15} />
