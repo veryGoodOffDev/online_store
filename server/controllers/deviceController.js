@@ -4,9 +4,12 @@ const {Device, DeviceInfo} = require('../models/models')
 const ApiError = require('../error/ApiError')
 
 class DeviceController {
+
     async create(req, res, next) {
+        console.log(req.body, 'body в создании')
         try{
             let {name, price, brandId, typeId, info} = req.body
+            
             const {img} = req.files
             let fileName = uuid.v4() + ".jpg"
             img.mv(path.resolve(__dirname, '..', 'static', fileName))
@@ -28,10 +31,10 @@ class DeviceController {
         }
 
     }
-    async getAll(req, res) {
+    async getAll(req, res, next) {
         let {brandId, typeId, limit, page} = req.query
         page = page || 1
-        limit = limit || 10
+        limit = limit || 9
         let offset = page * limit - limit
         let devices;
         if(!brandId && !typeId) {
@@ -50,7 +53,7 @@ class DeviceController {
     }
     async getOne(req, res) {
         const {id} = req.params
-        const device = await Device.findOne(
+      const device = await Device.findOne(
             {
             where:{id},
             include:[{model: DeviceInfo, as: 'info'}]
@@ -59,10 +62,22 @@ class DeviceController {
         return res.json(device)
     }
 
-    async removeOne () {
-        await Device.destroy({
-            where:{id}
-        })
+    async removeOne (req, res) {
+        const {id} = req.query
+        try {
+          const response =  await Device.destroy({where:{id}}).then((data) => {
+            if(data) {
+                console.log('объект успешно удален')
+            } else {
+                return
+            }
+          })
+          console.log(response)
+          return res.json(response)
+            
+        } catch (e) {
+            console.error(e)
+        }
     }
 }
 

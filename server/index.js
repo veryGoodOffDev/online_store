@@ -20,9 +20,9 @@ app.use(fileUpload({}))
 app.use('/api', router)
 
 
-
 //Обработка ошибок
 app.use(errorHandler)
+
 
 const start = async () => {
     try{
