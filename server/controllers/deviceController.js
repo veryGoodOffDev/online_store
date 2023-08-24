@@ -25,11 +25,31 @@ class DeviceController {
                         })
                     )
             }
+            
             return res.json(device)
         } catch (e) {
             next(ApiError.badRequest(e.message))
         }
 
+    }
+
+    //изменение данных о товаре, пока только назавание и цена
+    async update(req, res, next) {
+        let {id} = req.params
+        const {name, price} = req.body
+        try{
+            const device = await Device.findByPk(id)
+            if(device) {
+                device.name = name;
+                device.price = price;
+                await device.save()
+                res.send('Данные успешно изменены');
+            } else {
+                res.status(404)
+            }
+        } catch (e) {
+            next(ApiError.badRequest(e.message))
+        }
     }
     async getAll(req, res, next) {
         let {brandId, typeId, limit, page} = req.query
