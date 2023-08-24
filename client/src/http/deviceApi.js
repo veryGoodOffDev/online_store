@@ -34,10 +34,7 @@ export const getOneDevice = async (id) => {
 }
 
 export const deleteDevice = async (id) => {
-    const {data} = await $authHost.delete('api/device', {params:{
+   await $authHost.delete('api/device', {params:{
         id
     }})
-    console.log(data.rows, id, 'data delete')
-
-    return data
 }

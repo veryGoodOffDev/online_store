@@ -11,8 +11,8 @@ import '../pages/Shop.css'
 
 const Shop = observer(() => {
   const { device } = useContext(Context);
-
   useEffect(() => {
+
     getTypes().then((data) => device.setTypes(data));
     getBrands().then((data) => {
       device.setBrands(data);
@@ -24,17 +24,20 @@ const Shop = observer(() => {
   }, []);
 
   useEffect(() => {
-    device.setIsLoading(true)
-    getDevices(
-      device.selectedType.id,
-      device.selectedBrand.id,
-      device.page,
-      8
-    ).then((data) => {
-      device.setDevices(data.rows);
-      device.setTotalCount(data.count);
-      device.setIsLoading(false)
-    });
+    if(device.page && device.selectedBrand && device.selectedType) {
+      device.setIsLoading(true)
+      getDevices(
+        device.selectedType.id,
+        device.selectedBrand.id,
+        device.page,
+        8
+      ).then((data) => {
+        device.setDevices(data.rows);
+        device.setTotalCount(data.count);
+        // device.setIsLoading(false)
+      });
+    }
+    
   }, [device.page, device.selectedBrand, device.selectedType]);
   return (
     <>

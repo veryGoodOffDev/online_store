@@ -1,7 +1,7 @@
 import {makeAutoObservable} from 'mobx'
 export default class DeviceStore {
     constructor() {
-        this._isLoading = false
+        this._isLoading = true
         this._types = []
         this._brands = []
         this._devices = []
@@ -34,6 +34,7 @@ export default class DeviceStore {
     }
     setDevices(devices) {
         this._devices = devices
+        this.setIsLoading(false)
     }
     setSelectedType(selectedType) {
         this.setPage(1)
