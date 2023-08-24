@@ -22,6 +22,15 @@ export const createDevice = async (device) => {
     const {data} = await $authHost.post('api/device', device)
     return data
 }
+
+//Изменение данных о товаре
+export const editDevice = async(id, {name, price}) => {
+    const {data} = await $host.put(`api/device/${id}`, {name, price}, {params:{
+        id,    
+    }
+})
+    return data
+}
 export const getDevices = async (typeId, brandId, page, limit) => {
     const {data} = await $host.get('api/device', {params: {
         typeId, brandId, page, limit
@@ -33,6 +42,7 @@ export const getOneDevice = async (id) => {
     return data
 }
 
+//удаление по id
 export const deleteDevice = async (id) => {
    await $authHost.delete('api/device', {params:{
         id

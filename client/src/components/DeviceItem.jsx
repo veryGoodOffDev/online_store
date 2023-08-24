@@ -4,14 +4,16 @@ import star from "../assets/star.png";
 import { useNavigate } from "react-router-dom";
 import { DEVICE_ROUTE } from "../utils/consts";
 import { Context } from "..";
-import { deleteDevice, getDevices } from "../http/deviceApi";
+import { deleteDevice, editDevice, getDevices } from "../http/deviceApi";
 import DeleteDevice from "./modals/DeleteDevice";
+import EditDevice from "./modals/EditDevice";
 
 const DeviceItem = ({ dev, brandName }) => {
   const navigate = useNavigate();
   const { user } = useContext(Context);
   const { device } = useContext(Context);
   const [deleteDeviceVisible, setDeleteDeviceVisible] = useState(false);
+  const [editDeviceVisible, setEditDeviceVisible] = useState(false);
 
   const removeItem = (id) => {
     setDeleteDeviceVisible(true);
@@ -26,8 +28,14 @@ const DeviceItem = ({ dev, brandName }) => {
     });
   };
   const editItem = (id) => {
+    setEditDeviceVisible(true)
     console.log(id, "id устройства, изменение");
   };
+
+  const cancelEdit = () => {
+    setEditDeviceVisible(false)
+  }
+
 
   return (
     <>
@@ -86,6 +94,15 @@ const DeviceItem = ({ dev, brandName }) => {
         onDelete={() => deleteItem(dev.id)}
         brandName={brandName.name}
         devName={dev.name}
+      />
+      <EditDevice
+      show={editDeviceVisible}
+      onHide={() => setEditDeviceVisible(false)}
+      onEdit={() => editItem(dev.id)}
+      devId={dev.id}
+      devName={dev.name}
+      devPrice={dev.price}
+      
       />
     </>
   );
