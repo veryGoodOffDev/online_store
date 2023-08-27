@@ -21,7 +21,7 @@ const DeviceItem = ({ dev, brandName }) => {
   const deleteItem = (id) => {
     deleteDevice(id).then((data) => {
       console.log(data);
-      getDevices(null, null, 1, 8).then((data) => {
+      getDevices(null, null, 1, 100).then((data) => {
         device.setDevices(data.rows);
         device.setTotalCount(data.count);
       });

@@ -61,12 +61,14 @@ const EditDevice = observer(({show, onHide, devId, devName, devPrice}) => {
                         )}
                 </Dropdown.Menu>
             </Dropdown> */}
+            <Form.Label>Название устройства</Form.Label>
             <FormControl
                 value={name}
                 className="mt-3"
                 placeholder="Введите новое название устройства"
                 onChange={e => setName(e.target.value)}
             />
+            <Form.Label>Цена</Form.Label>
             <Form.Control
                 value={price}
                 className="mt-3"

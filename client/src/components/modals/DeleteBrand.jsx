@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Button} from "react-bootstrap";
 
-const DeleteDevice = ({show, onHide, onDelete, brandName, devName}) => {
+const DeleteBrand = ({show, onHide, onDelete, brandName}) => {
 
   return (
     <Modal
@@ -12,11 +12,11 @@ const DeleteDevice = ({show, onHide, onDelete, brandName, devName}) => {
   >
     <Modal.Header closeButton>
       <Modal.Title id="contained-modal-title-vcenter">
-        Удаление устройства
+        Удаление Бренда
       </Modal.Title>
     </Modal.Header>
     <Modal.Body>
-        Вы уверены, что хотите удалить устройство {brandName} : {devName}
+        Вы уверены, что хотите удалить бренд : {brandName}
     </Modal.Body>
     <Modal.Footer>
       <Button  variant={'outline-warning'} onClick={onHide}>Отмена</Button>
@@ -26,4 +26,4 @@ const DeleteDevice = ({show, onHide, onDelete, brandName, devName}) => {
   );
 };
 
-export default DeleteDevice;
+export default DeleteBrand;

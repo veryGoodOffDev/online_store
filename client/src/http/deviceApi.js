@@ -13,6 +13,11 @@ export const createBrand = async (brand) => {
     const {data} = await $authHost.post('api/brand', brand)
     return data
 }
+export const deleteBrand = async (id) => {
+    await $authHost.delete('api/brand', {params:{
+         id
+     }})
+ }
 export const getBrands = async () => {
     const {data} = await $host.get('api/brand')
     return data
@@ -48,3 +53,5 @@ export const deleteDevice = async (id) => {
         id
     }})
 }
+
+

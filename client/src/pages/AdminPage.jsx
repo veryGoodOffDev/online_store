@@ -8,6 +8,7 @@ import DeviceList from '../components/DeviceList'
 import { getBrands, getDevices, getTypes } from '../http/deviceApi'
 import { observer } from 'mobx-react-lite'
 import { Context } from '..'
+import DeleteDevice from '../components/modals/DeleteDevice'
 
 const AdminPage = observer(() => {
     const {device} = useContext(Context)
@@ -32,6 +33,7 @@ const AdminPage = observer(() => {
     const [brandVisible, setBrandVisible] = useState(false)
     const [deviceVisible, setDeviceVisible] = useState(false)
     const [typeVisible, setTypeVisible] = useState(false)
+    const [deleteBrandVicible, setDeleteBrandVicible] = useState(false)
     return (
         <Container className='d-flex flex-column'>
             <Button variant={'outline-dark'} className='mt-2 p-2' onClick={() => setTypeVisible(true)}>Добавить тип</Button>
@@ -42,6 +44,7 @@ const AdminPage = observer(() => {
             <CreateBrand show={brandVisible} onHide={() => setBrandVisible(false)}/>
             <CreateDevice show={deviceVisible} onHide={() => setDeviceVisible(false)}/>
             <CreateType show={typeVisible} onHide={() => setTypeVisible(false)}/>
+            <DeleteDevice show={deleteBrandVicible} onHide={() => setDeleteBrandVicible(false)}/>
         </Container>
     )
 })
