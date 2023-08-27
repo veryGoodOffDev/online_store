@@ -33,7 +33,7 @@ const AdminPage = observer(() => {
     const [brandVisible, setBrandVisible] = useState(false)
     const [deviceVisible, setDeviceVisible] = useState(false)
     const [typeVisible, setTypeVisible] = useState(false)
-    const [deleteBrandVicible, setDeleteBrandVicible] = useState(false)
+    const [deleteBrandVisible, setDeleteBrandVicible] = useState(false)
     return (
         <Container className='d-flex flex-column'>
             <Button variant={'outline-dark'} className='mt-2 p-2' onClick={() => setTypeVisible(true)}>Добавить тип</Button>
@@ -44,7 +44,7 @@ const AdminPage = observer(() => {
             <CreateBrand show={brandVisible} onHide={() => setBrandVisible(false)}/>
             <CreateDevice show={deviceVisible} onHide={() => setDeviceVisible(false)}/>
             <CreateType show={typeVisible} onHide={() => setTypeVisible(false)}/>
-            <DeleteDevice show={deleteBrandVicible} onHide={() => setDeleteBrandVicible(false)}/>
+            <DeleteBrand show={deleteBrandVisible} onHide={() => setDeleteBrandVicible(false)}/>
         </Container>
     )
 })
