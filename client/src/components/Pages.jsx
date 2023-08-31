@@ -5,23 +5,27 @@ import { Context } from "..";
 
 const Pages = observer(() => {
   const { device } = useContext(Context);
-  const pageCount = Math.ceil(device.totalCount / device.limit)
-  const pages  = []
-  for(let i = 0; i < pageCount; i++) {
-    pages.push(i + 1)
+  const pageCount = Math.ceil(device.totalCount / device.limit);
+  const pages = [];
+  for (let i = 0; i < pageCount; i++) {
+    pages.push(i + 1);
   }
-   return (
-    
+  return (
     <Pagination className="mt-5">
-        {pages.length > 1 ? pages.map(page => {
-            {return<Pagination.Item 
-                key={page}
-                active={device.page === page}
-                onClick={() => device.setPage(page)}
-                
-        >{page}</Pagination.Item>}
-          
-        }): ''}
+      {pages.length > 1
+        && pages.map((page) => {
+            {
+              return (
+                <Pagination.Item
+                  key={page}
+                  active={device.page === page}
+                  onClick={() => device.setPage(page)}
+                >
+                  {page}
+                </Pagination.Item>
+              );
+            }
+          })}
     </Pagination>
   );
 });

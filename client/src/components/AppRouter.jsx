@@ -33,6 +33,7 @@ const AppRouter = observer(() => {
       ) : (
         <Routes>
           <Route path={SHOP_ROUTE} element={<Shop />} />
+          <Route path={BASCET_ROUTE} element={<Bascet />} />
           <Route path={LOGIN_ROUTE} element={<Auth />} />
           <Route path={REGISTRATION_ROUTE} element={<Auth />} />
           <Route path={DEVICE_ROUTE + "/:id"} element={<DevicePage />} />

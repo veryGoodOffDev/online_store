@@ -7,10 +7,10 @@ import { observer } from "mobx-react-lite";
 import { Context } from "..";
 import { getBrands, getDevices, getTypes } from "../http/deviceApi";
 import Pages from "../components/Pages";
-import '../pages/Shop.css'
+import '../pages/Shop.css';
 
 const Shop = observer(() => {
-  const { device } = useContext(Context);
+  const { device, cart } = useContext(Context);
   useEffect(() => {
 
     getTypes().then((data) => device.setTypes(data));
@@ -22,6 +22,12 @@ const Shop = observer(() => {
       device.setTotalCount(data.count);
     });
   }, []);
+
+  useEffect(() => {
+    if(localStorage) {
+      cart.setCart(JSON.parse(localStorage.getItem('cartItems')))
+    }
+  },[])
 
   useEffect(() => {
     if(device.page && device.selectedBrand && device.selectedType) {

@@ -15,11 +15,10 @@ const DevicePage = () => {
        <Container className='mt-3'>
         <Row>
             <Col md={4}>
-                <Image style={{objectFit:'cover'}} width={300} height={300} src={process.env.REACT_APP_API_URL + device.img}/>
+                <Image style={{objectFit:'cover'}} width={300} src={process.env.REACT_APP_API_URL + device.img}/>
             </Col>
             <Col md={4}>
                 <Row className='d-flex flex-column align-items-center'>
-                    <h2 style={{textAlign:'center'}}>{device.name}</h2>
                     <div 
                         className='d-flex justify-content-center align-items-center'
                         style={{background:`url(${star}) no-repeat center center`, with:240, height:240, backgroundSize:'contain', fontSize: 64}}
@@ -40,6 +39,7 @@ const DevicePage = () => {
 
                 </Card>
             </Col>
+            <h2 style={{border: '1px solid black'}}>{device.name}</h2>
             </Row>
             <Row className='d-flex flex-column m-3'>
             <h1>Характеристики</h1>

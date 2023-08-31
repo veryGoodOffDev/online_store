@@ -8,7 +8,7 @@ import DeviceList from '../components/DeviceList'
 import { getBrands, getDevices, getTypes } from '../http/deviceApi'
 import { observer } from 'mobx-react-lite'
 import { Context } from '..'
-import DeleteDevice from '../components/modals/DeleteDevice'
+import DeleteBrand from '../components/modals/DeleteBrand'
 
 const AdminPage = observer(() => {
     const {device} = useContext(Context)
