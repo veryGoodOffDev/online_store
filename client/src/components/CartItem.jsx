@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "..";
 
 const CartItem = ({ name, price, img, id}) => {
   const [quantity, setQuantity] = useState(1)
   const {cart} = useContext(Context)
   const removeCartItem = (id) => {
-    console.log(id)
     cart.removeOne(id)
     localStorage.setItem('cartItems', JSON.stringify(cart.cart))
   }
