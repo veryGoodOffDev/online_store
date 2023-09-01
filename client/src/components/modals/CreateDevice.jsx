@@ -22,6 +22,7 @@ const CreateDevice = observer(({ show, onHide }) => {
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
+  const [quantity, setQuantity] = useState(1)
   const [file, setFile] = useState(null);
   const [info, setInfo] = useState([]);
 

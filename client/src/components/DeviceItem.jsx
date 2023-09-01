@@ -27,8 +27,15 @@ const DeviceItem = ({ dev, brandName }) => {
   };
 
   const addToCart = (item) => {
-    cart.addOne(item)
+  if(cart.cart.find(i => i.id === item.id)) {
+    cart.increaseQuantity(item.id)
+    cart.setQuantityCartItems()
     localStorage.setItem('cartItems', JSON.stringify(cart.cart))
+  } else {
+    cart.addOne(item)
+    cart.setQuantityCartItems()
+    localStorage.setItem('cartItems', JSON.stringify(cart.cart))
+  }
   }
 
   return (

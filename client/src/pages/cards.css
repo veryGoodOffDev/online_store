@@ -151,3 +151,25 @@
     background-color: #5f33ff;
     color: #fff;
   }
+
+  .cart__clear {
+  display: block;
+  width: 200px;
+  font-weight: 400;
+  font-size: 17px;
+  color: #4a4845;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #5e4f40;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 20px;
+  align-self: end;
+  }
+
+  .cart__clear:hover {
+    border: 1px solid #5f33ff;
+    background-color: #5f33ff;
+    color: #fff;
+  }

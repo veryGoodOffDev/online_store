@@ -1,19 +1,29 @@
 import React, { useContext, useState } from "react";
 import { Context } from "..";
 
-const CartItem = ({ name, price, img, id}) => {
-  const [quantity, setQuantity] = useState(1)
-  const {cart} = useContext(Context)
+const CartItem = ({ name, price, img, id, quantity}) => {
+  const {cart, device} = useContext(Context)
+
   const removeCartItem = (id) => {
     cart.removeOne(id)
+    cart.setQuantityCartItems()
+    localStorage.setItem('cartItems', JSON.stringify(cart.cart))
+  }
+
+  const increaseCartItem = (id) => {
+    cart.increaseQuantity(id)
+    cart.setQuantityCartItems()
+    localStorage.setItem('cartItems', JSON.stringify(cart.cart))
+  }
+
+  const decreaseCartItem = (id) => {
+    cart.decreaseQuantity(id)
+    cart.setQuantityCartItems()
     localStorage.setItem('cartItems', JSON.stringify(cart.cart))
   }
 
   const changeQuantity = (e) => {
-    setQuantity(Number(e.target.value))
-    if(quantity === 0) {
-      setQuantity(1)
-    }
+  
   }
 
   return (
@@ -32,7 +42,7 @@ const CartItem = ({ name, price, img, id}) => {
       </div>
 
       <div className="quantity">
-        <button className="plus-btn-q" type="button" name="button" onClick={() => setQuantity(prevState => prevState + 1)}>
+        <button className="plus-btn-q" type="button" name="button" onClick={() => increaseCartItem(id)}>
           <svg>
             <g>
               <path
@@ -45,7 +55,7 @@ const CartItem = ({ name, price, img, id}) => {
           </svg>
         </button>
         <input type="text" name="name" value={quantity} onChange={(e) => changeQuantity(e)} min={1}/>
-        <button className="minus-btn-q" type="button" name="button" onClick={() => setQuantity(prevState => prevState - 1)}>
+        <button className="minus-btn-q" disabled={quantity === 0 && true} type="button" name="button" onClick={() => decreaseCartItem(id)} >
           <img src="minus.svg" alt="" />
         </button>
       </div>

@@ -26,6 +26,7 @@ const Shop = observer(() => {
   useEffect(() => {
     if(localStorage) {
       cart.setCart(JSON.parse(localStorage.getItem('cartItems')))
+      cart.setQuantityCartItems()
     }
   },[])
 
