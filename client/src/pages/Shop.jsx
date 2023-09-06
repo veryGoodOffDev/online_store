@@ -10,7 +10,7 @@ import Pages from "../components/Pages";
 import '../pages/Shop.css';
 
 const Shop = observer(() => {
-  const { device, cart } = useContext(Context);
+  const { device, cart, user } = useContext(Context);
   useEffect(() => {
 
     getTypes().then((data) => device.setTypes(data));
@@ -45,7 +45,7 @@ const Shop = observer(() => {
       });
     }
     
-  }, [device.page, device.selectedBrand, device.selectedType]);
+  }, [device.page, device.selectedBrand, device.selectedType, user.isAuth]);
   return (
     <>
       {device.isLoading ? (

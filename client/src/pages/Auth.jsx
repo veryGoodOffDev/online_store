@@ -21,11 +21,12 @@ const Auth = observer(() => {
       if (isLogin) {
         data = await login(email, password);
         console.log(data, 'data')
+        user.setUser(data)
       } else {
         data = await registration(email, password);
       }
-      user.setUser(user)
       user.setIsAuth(true)
+      user.setRole(data.role)
       navigate(SHOP_ROUTE)
     } catch (e) {
       alert(e.response.data.message)
