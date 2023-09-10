@@ -119,6 +119,7 @@
 
 .quantity {
   margin-right: 60px;
+  display: flex;
 }
 .quantity input {
   -webkit-appearance: none;
@@ -131,6 +132,9 @@
 }
 
 button[class*="btn-q"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 30px;
   height: 30px;
   background-color: #e1e8ee;
@@ -139,14 +143,18 @@ button[class*="btn-q"] {
   cursor: pointer;
 }
 .minus-btn-q svg {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
+    color: #86939e;
+
 }
 .plus-btn-q svg {
     width: 10px;
     height: 10px;
+    color: #86939e;
     top: 0;
     left: 0;
+
 }
 
 button:focus,

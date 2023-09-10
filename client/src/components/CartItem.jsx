@@ -1,35 +1,36 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Context } from "..";
 
-const CartItem = ({ name, price, img, id, quantity}) => {
-  const {cart, device} = useContext(Context)
+const CartItem = ({ name, price, img, id, quantity }) => {
+  const { cart} = useContext(Context);
 
   const removeCartItem = (id) => {
-    cart.removeOne(id)
-    cart.setQuantityCartItems()
-    localStorage.setItem('cartItems', JSON.stringify(cart.cart))
-  }
+    cart.removeOne(id);
+    cart.setQuantityCartItems();
+    localStorage.setItem("cartItems", JSON.stringify(cart.cart));
+  };
 
   const increaseCartItem = (id) => {
-    cart.increaseQuantity(id)
-    cart.setQuantityCartItems()
-    localStorage.setItem('cartItems', JSON.stringify(cart.cart))
-  }
+    cart.increaseQuantity(id);
+    cart.setQuantityCartItems();
+    localStorage.setItem("cartItems", JSON.stringify(cart.cart));
+  };
 
   const decreaseCartItem = (id) => {
-    cart.decreaseQuantity(id)
-    cart.setQuantityCartItems()
-    localStorage.setItem('cartItems', JSON.stringify(cart.cart))
-  }
+    cart.decreaseQuantity(id);
+    cart.setQuantityCartItems();
+    localStorage.setItem("cartItems", JSON.stringify(cart.cart));
+  };
 
-  const changeQuantity = (e) => {
-  
-  }
+  const changeQuantity = (e) => {};
 
   return (
     <div className="item">
       <div className="buttons">
-        <span className="delete-btn-q" onClick={() => removeCartItem(id) }></span>
+        <span
+          className="delete-btn-q"
+          onClick={() => removeCartItem(id)}
+        ></span>
         <span className="like-btn-q"></span>
       </div>
       <div className="item__image-container">
@@ -42,8 +43,49 @@ const CartItem = ({ name, price, img, id, quantity}) => {
       </div>
 
       <div className="quantity">
-        <button className="plus-btn-q" type="button" name="button" onClick={() => increaseCartItem(id)}>
-          <svg>
+        <button
+          className="minus-btn-q"
+          disabled={quantity === 0 && true}
+          type="button"
+          name="button"
+          onClick={() => decreaseCartItem(id)}
+        >
+          <svg
+            width="10px"
+            height="10px"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 12L18 12"
+              stroke="#000000"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+        <input
+          type="text"
+          name="name"
+          value={quantity}
+          onChange={(e) => changeQuantity(e)}
+          min={1}
+        />
+                <button
+          className="plus-btn-q"
+          type="button"
+          name="button"
+          onClick={() => increaseCartItem(id)}
+        >
+          <svg
+            fill="currentColor"
+            width="10px"
+            height="10px"
+            viewBox="0 0 45.402 45.402"
+          >
             <g>
               <path
                 d="M41.267,18.557H26.832V4.134C26.832,1.851,24.99,0,22.707,0c-2.283,0-4.124,1.851-4.124,4.135v14.432H4.141
@@ -52,12 +94,10 @@ const CartItem = ({ name, price, img, id, quantity}) => {
 		c2.283,0,4.134-1.867,4.133-4.15C45.399,20.425,43.548,18.557,41.267,18.557z"
               />
             </g>
+            <svg />
           </svg>
         </button>
-        <input type="text" name="name" value={quantity} onChange={(e) => changeQuantity(e)} min={1}/>
-        <button className="minus-btn-q" disabled={quantity === 0 && true} type="button" name="button" onClick={() => decreaseCartItem(id)} >
-          <img src="minus.svg" alt="" />
-        </button>
+
       </div>
 
       <div className="total-price">{price * quantity}</div>

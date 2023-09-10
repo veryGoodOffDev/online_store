@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -6,9 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { Context } from "..";
 import { NavLink, useNavigate } from "react-router-dom";
 import {
-  ADMIN_ROUTE,
   BASCET_ROUTE,
-  LOGIN_ROUTE,
   SHOP_ROUTE,
   USER_ROUTE,
 } from "../utils/consts";

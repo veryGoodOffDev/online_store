@@ -9,9 +9,11 @@ import { getBrands, getDevices, getTypes } from '../http/deviceApi'
 import { observer } from 'mobx-react-lite'
 import { Context } from '..'
 import DeleteBrand from '../components/modals/DeleteBrand'
+import UsersList from '../components/UsersList'
+import { getUsers } from '../http/userApi'
 
 const AdminPage = observer(() => {
-    const {device} = useContext(Context)
+    const {device, user} = useContext(Context)
 
 
     useEffect(() => {
@@ -21,6 +23,10 @@ const AdminPage = observer(() => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
         })
+        getUsers().then((data) => {
+            user.setUsers(data.rows)
+            console.log(user.users)
+          })
     }, [])
 
     useEffect(() => {
@@ -40,6 +46,8 @@ const AdminPage = observer(() => {
             <Button variant={'outline-dark'} className='mt-2 p-2' onClick={() => setBrandVisible(true)}>Добавить бренд</Button>
             <Button variant={'outline-dark'} className='mt-2 p-2' onClick={() => setDeviceVisible(true)}>Добавить устройство</Button>
             <BrandList/>
+            <UsersList/>
+            <h2>Все продукты</h2>
             <DeviceList/>
             <CreateBrand show={brandVisible} onHide={() => setBrandVisible(false)}/>
             <CreateDevice show={deviceVisible} onHide={() => setDeviceVisible(false)}/>

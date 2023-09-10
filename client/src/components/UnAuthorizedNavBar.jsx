@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -6,7 +6,6 @@ import Navbar from "react-bootstrap/Navbar";
 import { Context } from "..";
 import { NavLink, useNavigate } from "react-router-dom";
 import {
-  ADMIN_ROUTE,
   BASCET_ROUTE,
   LOGIN_ROUTE,
   SHOP_ROUTE,
@@ -14,24 +13,12 @@ import {
 import { observer } from "mobx-react-lite";
 
 const UnAuthorizedNavBar = observer(() => {
-  const { device, cart, user } = useContext(Context);
+  const { device, cart } = useContext(Context);
   const navigate = useNavigate();
 
   const clearFilter = () => {
     device.setSelectedType({});
     device.setSelectedBrand({});
-  };
-
-  const goToAdminPage = () => {
-    navigate(ADMIN_ROUTE);
-    device.setSelectedType({});
-    device.setSelectedBrand({});
-  };
-  const logOut = () => {
-    user.setUser({});
-    user.setIsAuth(false);
-    user.setRole("");
-    localStorage.removeItem("token");
   };
   return (
     <Navbar expand="lg" className="bg-body-tertiary">

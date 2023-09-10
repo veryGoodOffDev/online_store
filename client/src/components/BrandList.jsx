@@ -8,6 +8,7 @@ const BrandList = observer(() => {
   const { device } = useContext(Context);
   return (
     <Row className="d-flex mt-2">
+      <h2>Бренды</h2>
         {device.brands.map(brand => 
             <BrandItem key={brand.id} brand={brand}/>
             )}

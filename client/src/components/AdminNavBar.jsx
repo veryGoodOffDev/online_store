@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -8,7 +8,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import {
   ADMIN_ROUTE,
   BASCET_ROUTE,
-  LOGIN_ROUTE,
   SHOP_ROUTE,
 } from "../utils/consts";
 import { observer } from "mobx-react-lite";

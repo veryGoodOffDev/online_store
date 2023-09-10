@@ -8,6 +8,7 @@ import { Context } from "..";
 import { getBrands, getDevices, getTypes } from "../http/deviceApi";
 import Pages from "../components/Pages";
 import '../pages/Shop.css';
+import { getUsers } from "../http/userApi";
 
 const Shop = observer(() => {
   const { device, cart, user } = useContext(Context);
@@ -21,6 +22,10 @@ const Shop = observer(() => {
       device.setDevices(data.rows);
       device.setTotalCount(data.count);
     });
+    getUsers().then((data) => {
+      user.setUsers(data.rows)
+      console.log(user.users)
+    })
   }, []);
 
   useEffect(() => {
