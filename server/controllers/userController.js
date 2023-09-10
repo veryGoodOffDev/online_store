@@ -48,6 +48,13 @@ class UserController {
         return res.json({token})
         
     }
+
+    async getAll(req, res, next) {
+        let {email, id, first_name, last_name} = req.query
+        let users;
+            users = await User.findAndCountAll()
+        return res.json(users)
+    }
 }
 
 module.exports = new UserController()

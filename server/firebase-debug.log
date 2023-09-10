@@ -1,0 +1,91 @@
+[debug] [2023-09-01T21:28:17.542Z] ----------------------------------------------------------------------
+[debug] [2023-09-01T21:28:17.545Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\lolib\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-09-01T21:28:17.546Z] CLI Version:   12.5.2
+[debug] [2023-09-01T21:28:17.547Z] Platform:      win32
+[debug] [2023-09-01T21:28:17.547Z] Node Version:  v18.17.1
+[debug] [2023-09-01T21:28:17.548Z] Time:          Sat Sep 02 2023 00:28:17 GMT+0300 (Москва, стандартное время)
+[debug] [2023-09-01T21:28:17.548Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-09-01T21:28:17.560Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-09-01T21:28:17.560Z] > authorizing via signed-in user (iluha.kot@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\lolib\Desktop\new\ishop\server
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2023-09-01T21:29:31.668Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2023-09-01T21:29:32.247Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2023-09-01T21:29:32.248Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project online-store-5769d (online-store) 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2023-09-01T21:29:57.384Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none]
+[debug] [2023-09-01T21:29:57.474Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200
+[debug] [2023-09-01T21:29:57.474Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"10.3.1","browserURL":"https://www.gstatic.com/firebasejs/10.3.1/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/10.3.1/firebase.tgz"},"live":{"version":"10.3","browserURL":"https://www.gstatic.com/firebasejs/live/10.3/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/10.3/firebase.tgz"},"components":{"analytics":"https://www.gstatic.com/firebasejs/10.3.1/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js","app-check":"https://www.gstatic.com/firebasejs/10.3.1/firebase-app-check.js","auth":"https://www.gstatic.com/firebasejs/10.3.1/firebase-auth.js","auth/cordova":"https://www.gstatic.com/firebasejs/10.3.1/firebase-auth/cordova.js","functions":"https://www.gstatic.com/firebasejs/10.3.1/firebase-functions.js","firestore":"https://www.gstatic.com/firebasejs/10.3.1/firebase-firestore.js","firestore/lite":"https://www.gstatic.com/firebasejs/10.3.1/firebase-firestore/lite.js","installations":"https://www.gstatic.com/firebasejs/10.3.1/firebase-installations.js","storage":"https://www.gstatic.com/firebasejs/10.3.1/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/10.3.1/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/10.3.1/firebase-remote-config.js","messaging":"https://www.gstatic.com/firebasejs/10.3.1/firebase-messaging.js","messaging/sw":"https://www.gstatic.com/firebasejs/10.3.1/firebase-messaging/sw.js","database":"https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js","firestore.memory":"https://www.gstatic.com/firebasejs/10.3.1/firebase-firestore.memory.js"}}
+[info] +  Wrote public/index.html 
+[info] 
+[info] i  Detected a .git folder at C:\Users\lolib\Desktop\new\ishop 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=920706200&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...
+[debug] [2023-09-01T21:30:05.816Z] >>> [apiv2][query] POST https://github.com/login/oauth/access_token [none]
+[debug] [2023-09-01T21:30:05.816Z] >>> [apiv2][body] POST https://github.com/login/oauth/access_token [stream]
+[debug] [2023-09-01T21:30:06.208Z] <<< [apiv2][status] POST https://github.com/login/oauth/access_token 200
+[debug] [2023-09-01T21:30:06.208Z] <<< [apiv2][body] POST https://github.com/login/oauth/access_token {"access_token":"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","token_type":"bearer","scope":"read:user,repo"}
+[debug] [2023-09-01T21:30:06.217Z] >>> [apiv2][query] GET https://api.github.com/user [none]
+[debug] [2023-09-01T21:30:06.565Z] <<< [apiv2][status] GET https://api.github.com/user 200
+[debug] [2023-09-01T21:30:06.565Z] <<< [apiv2][body] GET https://api.github.com/user {"login":"veryGoodOffDev","id":96524370,"node_id":"U_kgDOBcDYUg","avatar_url":"https://avatars.githubusercontent.com/u/96524370?v=4","gravatar_id":"","url":"https://api.github.com/users/veryGoodOffDev","html_url":"https://github.com/veryGoodOffDev","followers_url":"https://api.github.com/users/veryGoodOffDev/followers","following_url":"https://api.github.com/users/veryGoodOffDev/following{/other_user}","gists_url":"https://api.github.com/users/veryGoodOffDev/gists{/gist_id}","starred_url":"https://api.github.com/users/veryGoodOffDev/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/veryGoodOffDev/subscriptions","organizations_url":"https://api.github.com/users/veryGoodOffDev/orgs","repos_url":"https://api.github.com/users/veryGoodOffDev/repos","events_url":"https://api.github.com/users/veryGoodOffDev/events{/privacy}","received_events_url":"https://api.github.com/users/veryGoodOffDev/received_events","type":"User","site_admin":false,"name":"VeryGoodOffDev","company":null,"blog":"","location":null,"email":null,"hireable":null,"bio":null,"twitter_username":null,"public_repos":10,"public_gists":0,"followers":1,"following":1,"created_at":"2021-12-22T10:12:17Z","updated_at":"2023-05-11T08:34:17Z","private_gists":0,"total_private_repos":0,"owned_private_repos":0,"disk_usage":16322,"collaborators":0,"two_factor_authentication":false,"plan":{"name":"free","space":976562499,"collaborators":0,"private_repos":10000}}
+[info] 
+[info] +  Success! Logged into GitHub as veryGoodOffDev 
+[info] 
+[debug] [2023-09-01T21:30:16.961Z] >>> [apiv2][query] GET https://api.github.com/repos//actions/secrets/public-key type=owner
+[debug] [2023-09-01T21:30:17.237Z] <<< [apiv2][status] GET https://api.github.com/repos//actions/secrets/public-key 404
+[debug] [2023-09-01T21:30:17.237Z] <<< [apiv2][body] GET https://api.github.com/repos//actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[info] 
+[info] 
+[error] !  The provided authorization cannot be used with this repository. If this repository is in an organization, did you remember to grant access? 
+[info] 
+[info] i  Action required: Visit this URL to ensure access has been granted to the appropriate organization(s) for the Firebase CLI GitHub OAuth App: 
+[info] https://github.com/settings/connections/applications/89cf50f02ac6aaed3484
+[info] 
+[debug] [2023-09-01T21:30:25.110Z] >>> [apiv2][query] GET https://api.github.com/repos/y/actions/secrets/public-key type=owner
+[debug] [2023-09-01T21:30:25.407Z] <<< [apiv2][status] GET https://api.github.com/repos/y/actions/secrets/public-key 404
+[debug] [2023-09-01T21:30:25.407Z] <<< [apiv2][body] GET https://api.github.com/repos/y/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[info] 
+[info] 
+[error] !  The provided authorization cannot be used with this repository. If this repository is in an organization, did you remember to grant access? 
+[info] 
+[info] i  Action required: Visit this URL to ensure access has been granted to the appropriate organization(s) for the Firebase CLI GitHub OAuth App: 
+[info] https://github.com/settings/connections/applications/89cf50f02ac6aaed3484
+[info] 
+[debug] [2023-09-01T21:31:06.430Z] >>> [apiv2][query] GET https://api.github.com/repos//actions/secrets/public-key type=owner
+[debug] [2023-09-01T21:31:06.732Z] <<< [apiv2][status] GET https://api.github.com/repos//actions/secrets/public-key 404
+[debug] [2023-09-01T21:31:06.732Z] <<< [apiv2][body] GET https://api.github.com/repos//actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[info] 
+[info] 
+[error] !  The provided authorization cannot be used with this repository. If this repository is in an organization, did you remember to grant access? 
+[info] 
+[info] i  Action required: Visit this URL to ensure access has been granted to the appropriate organization(s) for the Firebase CLI GitHub OAuth App: 
+[info] https://github.com/settings/connections/applications/89cf50f02ac6aaed3484
+[info] 
