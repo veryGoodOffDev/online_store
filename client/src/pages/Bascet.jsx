@@ -21,11 +21,11 @@ useEffect(() => {
 },[])
   return (
     <div className="shopping-cart">
-      <div className="title">{cart.cart.length === 0 ? 'Shopping cart is empty': 'Shopping cart'}</div>
-        {cart.cart.map((item) => (
+      <div className="title">{cart.cart?.length === 0 ? 'Shopping cart is empty': 'Shopping cart'}</div>
+        {cart.cart?.map((item) => (
           <CartItem key={item.id} {...item} />
         ))}
-        {cart.cart.length > 0 && 
+        {cart.cart?.length > 0 && 
         <>
         <h3>Итого:</h3>
         <button className="cart__clear" onClick={() => clearCart() }>Очистить корзину</button>

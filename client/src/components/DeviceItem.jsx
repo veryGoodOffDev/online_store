@@ -27,7 +27,7 @@ const DeviceItem = ({ dev, brandName }) => {
   };
 
   const addToCart = (item) => {
-  if(cart.cart.find(i => i.id === item.id)) {
+  if(cart.cart?.find(i => i.id === item.id)) {
     cart.increaseQuantity(item.id)
     cart.setQuantityCartItems()
     localStorage.setItem('cartItems', JSON.stringify(cart.cart))

@@ -8,7 +8,7 @@ export default class CartStore {
     }
 
     setQuantityCartItems () {
-        this._quantityCartItems = this._cart.reduce((s, i) => s = s + i.quantity, 0)
+        this._quantityCartItems = this._cart?.reduce((s, i) => s = s + i.quantity, 0)
     }
     
     setCart (items) {
