@@ -49,7 +49,6 @@ const DeviceItem = ({ dev, brandName }) => {
         </div>
         <div className="card__bottom">
           <div className="card__prices">
-            {/* <div className="card__price card__price--discount">135 000</div> */}
             <div className="card__price card__price--common">{dev.price}</div>
           </div>
           <NavLink to={DEVICE_ROUTE + "/" + dev.id} className="card__title">
