@@ -52,7 +52,12 @@ class UserController {
     async getAll(req, res, next) {
         let {email, id, first_name, last_name} = req.query
         let users;
+        if(!email && !first_name) {
             users = await User.findAndCountAll()
+        }
+        if(email && first_name) {
+            users = await User.findAndCountAll({where:{email, first_name}})
+        }        
         return res.json(users)
     }
 }

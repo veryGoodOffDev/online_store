@@ -16,7 +16,6 @@ const BrandItem = ({ brand }) => {
       console.log('существуют товары с таким брендом')
     } else {
       console.log('удаляем бренд')
-      // console.log(id, 'id brand')
       deleteBrand(id).then((data) => {
         console.log(data);
         getBrands().then((data) => {
